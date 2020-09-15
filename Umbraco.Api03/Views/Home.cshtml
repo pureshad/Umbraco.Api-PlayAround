@@ -1,0 +1,29 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    Layout = "WebbasedTemplate.cshtml";
+}
+
+<div class="preloader">
+    <div class="preloader-body">
+        <div class="cssload-container">
+            <div class="cssload-speeding-wheel"></div>
+        </div>
+        <p>Loading...</p>
+    </div>
+</div>
+<div class="page">
+
+    @{
+        <!-- Preview section-->
+        Html.RenderAction("RenderSectionBanner", "Home");
+        <!-- EVERY PROJECT-->
+        Html.RenderAction("RenderSectionEveryProject", "Home");
+        <!-- Our awards-->
+        Html.RenderAction("RenderSectionOurAwards", "Home");
+        <!-- Latest Works-->
+        Html.RenderAction("RenderSectionLatestWorks", "Home");
+        <!-- Team-->
+        Html.RenderAction("RenderSectionTeam", "Home");
+
+    }
+</div>
