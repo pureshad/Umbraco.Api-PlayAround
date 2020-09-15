@@ -19,14 +19,14 @@ using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "f9304154c8556c6a")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "583cf302468ecaad")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.6")]
 
 namespace Umbraco.Web.PublishedContentModels
 {
 	/// <summary>Home</summary>
 	[PublishedContentModel("home")]
-	public partial class Home : PublishedContentModel
+	public partial class Home : PublishedContentModel, IIntroductionControl
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "home";
@@ -47,6 +47,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Home, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// Introduction: Enter your introduction text
+		///</summary>
+		[ImplementPropertyType("introduction")]
+		public IHtmlString Introduction
+		{
+			get { return Umbraco.Web.PublishedContentModels.IntroductionControl.GetIntroduction(this); }
 		}
 	}
 
@@ -128,16 +137,24 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 	}
 
-	/// <summary>Menu</summary>
-	[PublishedContentModel("menu")]
-	public partial class Menu : PublishedContentModel
+	// Mixin content Type 1070 with alias "introductionControl"
+	/// <summary>Introduction Control</summary>
+	public partial interface IIntroductionControl : IPublishedContent
+	{
+		/// <summary>Introduction</summary>
+		IHtmlString Introduction { get; }
+	}
+
+	/// <summary>Introduction Control</summary>
+	[PublishedContentModel("introductionControl")]
+	public partial class IntroductionControl : PublishedContentModel, IIntroductionControl
 	{
 #pragma warning disable 0109 // new is redundant
-		public new const string ModelTypeAlias = "menu";
+		public new const string ModelTypeAlias = "introductionControl";
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 #pragma warning restore 0109
 
-		public Menu(IPublishedContent content)
+		public IntroductionControl(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -148,10 +165,22 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 #pragma warning restore 0109
 
-		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Menu, TValue>> selector)
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<IntroductionControl, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
+
+		///<summary>
+		/// Introduction: Enter your introduction text
+		///</summary>
+		[ImplementPropertyType("introduction")]
+		public IHtmlString Introduction
+		{
+			get { return GetIntroduction(this); }
+		}
+
+		/// <summary>Static getter for Introduction</summary>
+		public static IHtmlString GetIntroduction(IIntroductionControl that) { return that.GetPropertyValue<IHtmlString>("introduction"); }
 	}
 
 	/// <summary>Folder</summary>
