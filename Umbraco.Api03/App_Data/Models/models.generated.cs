@@ -19,8 +19,8 @@ using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "746310d5116bb72c")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.6")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "849ccdfc1205f4ad")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
 
 namespace Umbraco.Web.PublishedContentModels
 {
@@ -122,6 +122,24 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// ImageWorks1
+		///</summary>
+		[ImplementPropertyType("imageWorks1")]
+		public string ImageWorks1
+		{
+			get { return this.GetPropertyValue<string>("imageWorks1"); }
+		}
+
+		///<summary>
+		/// ImageWorks2
+		///</summary>
+		[ImplementPropertyType("imageWorks2")]
+		public string ImageWorks2
+		{
+			get { return this.GetPropertyValue<string>("imageWorks2"); }
+		}
+
+		///<summary>
 		/// OurAwardImage1: choose image
 		///</summary>
 		[ImplementPropertyType("ourAwardImage1")]
@@ -185,6 +203,42 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// TeamImage1
+		///</summary>
+		[ImplementPropertyType("teamImage1")]
+		public string TeamImage1
+		{
+			get { return this.GetPropertyValue<string>("teamImage1"); }
+		}
+
+		///<summary>
+		/// TeamImage2
+		///</summary>
+		[ImplementPropertyType("teamImage2")]
+		public string TeamImage2
+		{
+			get { return this.GetPropertyValue<string>("teamImage2"); }
+		}
+
+		///<summary>
+		/// TeamImage3
+		///</summary>
+		[ImplementPropertyType("teamImage3")]
+		public string TeamImage3
+		{
+			get { return this.GetPropertyValue<string>("teamImage3"); }
+		}
+
+		///<summary>
+		/// TeamImage4
+		///</summary>
+		[ImplementPropertyType("teamImage4")]
+		public string TeamImage4
+		{
+			get { return this.GetPropertyValue<string>("teamImage4"); }
+		}
+
+		///<summary>
 		/// Title: Enter the main title
 		///</summary>
 		[ImplementPropertyType("title")]
@@ -223,7 +277,7 @@ namespace Umbraco.Web.PublishedContentModels
 
 	/// <summary>About</summary>
 	[PublishedContentModel("about")]
-	public partial class About : PublishedContentModel
+	public partial class About : PublishedContentModel, IHidePageNav
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "about";
@@ -245,11 +299,20 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
+
+		///<summary>
+		/// UmbracoNaviHide
+		///</summary>
+		[ImplementPropertyType("umbracoNaviHide")]
+		public bool UmbracoNaviHide
+		{
+			get { return Umbraco.Web.PublishedContentModels.HidePageNav.GetUmbracoNaviHide(this); }
+		}
 	}
 
 	/// <summary>Typography</summary>
 	[PublishedContentModel("typography")]
-	public partial class Typography : PublishedContentModel
+	public partial class Typography : PublishedContentModel, IHidePageNav
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "typography";
@@ -271,11 +334,20 @@ namespace Umbraco.Web.PublishedContentModels
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
+
+		///<summary>
+		/// UmbracoNaviHide
+		///</summary>
+		[ImplementPropertyType("umbracoNaviHide")]
+		public bool UmbracoNaviHide
+		{
+			get { return Umbraco.Web.PublishedContentModels.HidePageNav.GetUmbracoNaviHide(this); }
+		}
 	}
 
 	/// <summary>Contact</summary>
 	[PublishedContentModel("contact")]
-	public partial class Contact : PublishedContentModel
+	public partial class Contact : PublishedContentModel, IHidePageNav
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "contact";
@@ -296,6 +368,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Contact, TValue>> selector)
 		{
 			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// UmbracoNaviHide
+		///</summary>
+		[ImplementPropertyType("umbracoNaviHide")]
+		public bool UmbracoNaviHide
+		{
+			get { return Umbraco.Web.PublishedContentModels.HidePageNav.GetUmbracoNaviHide(this); }
 		}
 	}
 
@@ -389,6 +470,52 @@ namespace Umbraco.Web.PublishedContentModels
 
 		/// <summary>Static getter for AwardsTitle</summary>
 		public static IHtmlString GetAwardsTitle(IAwardsControl that) { return that.GetPropertyValue<IHtmlString>("awardsTitle"); }
+	}
+
+	// Mixin content Type 3092 with alias "hidePageNav"
+	/// <summary>HidePageNav</summary>
+	public partial interface IHidePageNav : IPublishedContent
+	{
+		/// <summary>UmbracoNaviHide</summary>
+		bool UmbracoNaviHide { get; }
+	}
+
+	/// <summary>HidePageNav</summary>
+	[PublishedContentModel("hidePageNav")]
+	public partial class HidePageNav : PublishedContentModel, IHidePageNav
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "hidePageNav";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public HidePageNav(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<HidePageNav, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// UmbracoNaviHide
+		///</summary>
+		[ImplementPropertyType("umbracoNaviHide")]
+		public bool UmbracoNaviHide
+		{
+			get { return GetUmbracoNaviHide(this); }
+		}
+
+		/// <summary>Static getter for UmbracoNaviHide</summary>
+		public static bool GetUmbracoNaviHide(IHidePageNav that) { return that.GetPropertyValue<bool>("umbracoNaviHide"); }
 	}
 
 	/// <summary>Folder</summary>

@@ -1,4 +1,6 @@
-﻿<section class="section section-lg bg-gray-100 section-lined">
+﻿@inherits UmbracoViewPage
+
+<section class="section section-lg bg-gray-100 section-lined">
     <div class="container container-lined">
         <div class="row">
             <div class="col-md-4"></div>
@@ -12,7 +14,7 @@
                 <div class="row no-gutters">
                     <div class="col-sm-6 wow fadeInLeft">
                         <div class="box-team box-team-right">
-                            <img src="~/images/index-3-1-390x332.jpg" alt="" width="390" height="332" />
+                            <img src="@Umbraco.Field("TeamImage1")" alt="images/index-3-1-390x332.jpg" width="390" height="332" />
                             <div class="meta">
                                 <div class="heading-6 title">John Smith</div>
                                 <p class="position">Senior Designer</p>
@@ -21,7 +23,7 @@
                     </div>
                     <div class="col-sm-6 wow fadeInRight">
                         <div class="box-team box-team-right">
-                            <img src="~/images/index-3-2-390x332.jpg" alt="" width="390" height="332" />
+                            <img src="@Umbraco.Field("TeamImage2")" alt="images/index-3-2-390x332.jpg" width="390" height="332" />
                             <div class="meta">
                                 <div class="heading-6 title">Gary Hughes</div>
                                 <p class="position">Designer</p>
@@ -30,7 +32,7 @@
                     </div>
                     <div class="col-sm-6 wow fadeInLeft" data-wow-delay="0.2s">
                         <div class="box-team box-team-right">
-                            <img src="~/images/index-3-3-390x332.jpg" alt="" width="390" height="332" />
+                            <img src="@Umbraco.Field("TeamImage3")" alt="images/index-3-3-390x332.jpg" width="390" height="332" />
                             <div class="meta">
                                 <div class="heading-6 title">Sam Lee</div>
                                 <p class="position">Developer</p>
@@ -39,7 +41,7 @@
                     </div>
                     <div class="col-sm-6 wow fadeInRight" data-wow-delay="0.2s">
                         <div class="box-team box-team-right">
-                            <img src="~/images/index-3-4-390x332.jpg" alt="" width="390" height="332" />
+                            <img src="@Umbraco.Field("TeamImage4")" alt="images/index-3-4-390x332.jpg" width="390" height="332" />
                             <div class="meta">
                                 <div class="heading-6 title">Sarah Parker</div>
                                 <p class="position">Marketing manager</p>
