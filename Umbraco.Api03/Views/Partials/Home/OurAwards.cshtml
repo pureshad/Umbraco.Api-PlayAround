@@ -1,4 +1,6 @@
-﻿<section class="section section-lg bg-default section-lined">
+﻿@inherits UmbracoViewPage
+
+<section class="section section-lg bg-default section-lined">
     <div class="container container-lined">
         <div class="row">
             <div class="col-md-4"></div>
@@ -31,15 +33,15 @@
         <div class="box-border-wrap-1 wow fadeInUp" data-wow-delay="0.2s">
             <div class="row">
                 <a class="col-6 col-md-4 box-border" href="#">
-                    <div class="title">Award #1</div><img src="~/images/brand-12-121x99.png" alt="" width="121" height="99" />
+                    <div class="title">Award #1</div><img src="@Umbraco.Field("ourAwardImage1")" alt="images/brand-12-121x99.png" width="121" height="99" />
                 </a><a class="col-6 col-md-4 box-border" href="#">
-                    <div class="title">Award #2</div><img src="~/images/brand-13-124x98.png" alt="" width="124" height="98" />
+                    <div class="title">Award #2</div><img src="@Umbraco.Field("ourAwardImage2")" alt="images/brand-13-124x98.png" width="124" height="98" />
                 </a><a class="col-6 col-md-4 box-border" href="#">
-                    <div class="title">Award #3</div><img src="~/images/brand-14-131x112.png" alt="" width="131" height="112" />
+                    <div class="title">Award #3</div><img src="@Umbraco.Field("ourAwardImage3")" alt="images/brand-14-131x112.png" width="131" height="112" />
                 </a><a class="col-6 col-md-4 box-border" href="#">
-                    <div class="title">Award #4</div><img src="~/images/brand-15-146x68.png" alt="" width="146" height="68" />
+                    <div class="title">Award #4</div><img src="@Umbraco.Field("ourAwardImage4")" alt="images/brand-15-146x68.png" width="146" height="68" />
                 </a><a class="col-6 col-md-4 box-border" href="#">
-                    <div class="title">Award #5</div><img src="~/images/brand-16-111x99.png" alt="" width="111" height="99" />
+                    <div class="title">Award #5</div><img src="@Umbraco.Field("ourAwardImage5")" alt="images/brand-16-111x99.png" width="111" height="99" />
                 </a><a class="col-6 col-md-4 box-border" href="#">
                     <div class="icon icon-sm mdi mdi-arrow-right"></div>
                 </a>

@@ -19,14 +19,14 @@ using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "66233b01190b1f52")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "746310d5116bb72c")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.6")]
 
 namespace Umbraco.Web.PublishedContentModels
 {
 	/// <summary>Home</summary>
 	[PublishedContentModel("home")]
-	public partial class Home : PublishedContentModel, IIntroductionControl
+	public partial class Home : PublishedContentModel, IAwardsControl, IIntroductionControl
 	{
 #pragma warning disable 0109 // new is redundant
 		public new const string ModelTypeAlias = "home";
@@ -56,6 +56,159 @@ namespace Umbraco.Web.PublishedContentModels
 		public string HeaderBanner
 		{
 			get { return this.GetPropertyValue<string>("headerBanner"); }
+		}
+
+		///<summary>
+		/// HyperLinkText: The button content text
+		///</summary>
+		[ImplementPropertyType("hyperLinkText")]
+		public string HyperLinkText
+		{
+			get { return this.GetPropertyValue<string>("hyperLinkText"); }
+		}
+
+		///<summary>
+		/// Image1: Choose an image
+		///</summary>
+		[ImplementPropertyType("image1")]
+		public string Image1
+		{
+			get { return this.GetPropertyValue<string>("image1"); }
+		}
+
+		///<summary>
+		/// Image2: Choose an image
+		///</summary>
+		[ImplementPropertyType("image2")]
+		public string Image2
+		{
+			get { return this.GetPropertyValue<string>("image2"); }
+		}
+
+		///<summary>
+		/// Image3: Choose an image
+		///</summary>
+		[ImplementPropertyType("image3")]
+		public string Image3
+		{
+			get { return this.GetPropertyValue<string>("image3"); }
+		}
+
+		///<summary>
+		/// Image4: Choose an image
+		///</summary>
+		[ImplementPropertyType("image4")]
+		public string Image4
+		{
+			get { return this.GetPropertyValue<string>("image4"); }
+		}
+
+		///<summary>
+		/// Image5: Choose an image
+		///</summary>
+		[ImplementPropertyType("image5")]
+		public string Image5
+		{
+			get { return this.GetPropertyValue<string>("image5"); }
+		}
+
+		///<summary>
+		/// Image6: Choose an image
+		///</summary>
+		[ImplementPropertyType("image6")]
+		public string Image6
+		{
+			get { return this.GetPropertyValue<string>("image6"); }
+		}
+
+		///<summary>
+		/// OurAwardImage1: choose image
+		///</summary>
+		[ImplementPropertyType("ourAwardImage1")]
+		public string OurAwardImage1
+		{
+			get { return this.GetPropertyValue<string>("ourAwardImage1"); }
+		}
+
+		///<summary>
+		/// OurAwardImage2
+		///</summary>
+		[ImplementPropertyType("ourAwardImage2")]
+		public string OurAwardImage2
+		{
+			get { return this.GetPropertyValue<string>("ourAwardImage2"); }
+		}
+
+		///<summary>
+		/// OurAwardImage3
+		///</summary>
+		[ImplementPropertyType("ourAwardImage3")]
+		public string OurAwardImage3
+		{
+			get { return this.GetPropertyValue<string>("ourAwardImage3"); }
+		}
+
+		///<summary>
+		/// OurAwardImage4
+		///</summary>
+		[ImplementPropertyType("ourAwardImage4")]
+		public string OurAwardImage4
+		{
+			get { return this.GetPropertyValue<string>("ourAwardImage4"); }
+		}
+
+		///<summary>
+		/// OurAwardImage5
+		///</summary>
+		[ImplementPropertyType("ourAwardImage5")]
+		public string OurAwardImage5
+		{
+			get { return this.GetPropertyValue<string>("ourAwardImage5"); }
+		}
+
+		///<summary>
+		/// ProjectTitleDescription: Write the description
+		///</summary>
+		[ImplementPropertyType("projectTitleDescription")]
+		public string ProjectTitleDescription
+		{
+			get { return this.GetPropertyValue<string>("projectTitleDescription"); }
+		}
+
+		///<summary>
+		/// SubTitle: Enter the subtitle
+		///</summary>
+		[ImplementPropertyType("subTitle")]
+		public string SubTitle
+		{
+			get { return this.GetPropertyValue<string>("subTitle"); }
+		}
+
+		///<summary>
+		/// Title: Enter the main title
+		///</summary>
+		[ImplementPropertyType("title")]
+		public string Title
+		{
+			get { return this.GetPropertyValue<string>("title"); }
+		}
+
+		///<summary>
+		/// TitleButtonLink: Enter link
+		///</summary>
+		[ImplementPropertyType("titleButtonLink")]
+		public string TitleButtonLink
+		{
+			get { return this.GetPropertyValue<string>("titleButtonLink"); }
+		}
+
+		///<summary>
+		/// AwardsTitle
+		///</summary>
+		[ImplementPropertyType("awardsTitle")]
+		public IHtmlString AwardsTitle
+		{
+			get { return Umbraco.Web.PublishedContentModels.AwardsControl.GetAwardsTitle(this); }
 		}
 
 		///<summary>
@@ -190,6 +343,52 @@ namespace Umbraco.Web.PublishedContentModels
 
 		/// <summary>Static getter for Introduction</summary>
 		public static IHtmlString GetIntroduction(IIntroductionControl that) { return that.GetPropertyValue<IHtmlString>("introduction"); }
+	}
+
+	// Mixin content Type 3083 with alias "awardsControl"
+	/// <summary>Awards Control</summary>
+	public partial interface IAwardsControl : IPublishedContent
+	{
+		/// <summary>AwardsTitle</summary>
+		IHtmlString AwardsTitle { get; }
+	}
+
+	/// <summary>Awards Control</summary>
+	[PublishedContentModel("awardsControl")]
+	public partial class AwardsControl : PublishedContentModel, IAwardsControl
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "awardsControl";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public AwardsControl(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<AwardsControl, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+		}
+
+		///<summary>
+		/// AwardsTitle
+		///</summary>
+		[ImplementPropertyType("awardsTitle")]
+		public IHtmlString AwardsTitle
+		{
+			get { return GetAwardsTitle(this); }
+		}
+
+		/// <summary>Static getter for AwardsTitle</summary>
+		public static IHtmlString GetAwardsTitle(IAwardsControl that) { return that.GetPropertyValue<IHtmlString>("awardsTitle"); }
 	}
 
 	/// <summary>Folder</summary>
