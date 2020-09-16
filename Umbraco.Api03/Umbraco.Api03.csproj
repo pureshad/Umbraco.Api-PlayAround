@@ -1723,12 +1723,13 @@
     <Content Include="Umbraco_Client\Ui\json2.js" />
     <Content Include="Umbraco_Client\Ui\knockout.js" />
     <Content Include="Umbraco_Client\Ui\knockout.mapping.js" />
+    <Content Include="Views\Partials\Home\Banner.cshtml" />
+    <Content Include="Views\Partials\SharedLayout\Header.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Views\Partials\SharedLayout\Footer.cshtml" />
     <Content Include="Views\About.cshtml" />
     <Content Include="Views\Contact.cshtml" />
     <Content Include="Views\Typography.cshtml" />
-    <Content Include="Views\Partials\Home\Banner.cshtml" />
     <Content Include="Views\Partials\Home\EveryProject.cshtml" />
     <Content Include="Views\Partials\Home\OurAwards.cshtml" />
     <Content Include="Views\Partials\Home\LatestWorks.cshtml" />
@@ -1961,7 +1962,6 @@
     <Content Include="Views\Home.cshtml" />
     <Content Include="Views\WebbasedTemplate.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Partials\SharedLayout\Header.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Partials\About\About.cshtml" />
     <Content Include="Views\Partials\Contact\Contact.cshtml" />
