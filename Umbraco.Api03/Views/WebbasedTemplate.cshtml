@@ -36,20 +36,34 @@
     </style>
 </head>
 <body>
+    <!-- BreadCrumbs-->
     <!-- Preview section-->
     @{
 
         Html.RenderAction("RenderHeader", "SiteSharedLayout");
     }
+    <div class="breadcrumb">
+        @{
+            var selection = CurrentPage.Ancestors();
+            if (selection.Any())
+            {
+                foreach (var page in selection.OrderBy("Level"))
+                {
+                <a href="@page.Url">@page.Name<span>&#8725;</span></a>
+                }
+                <span class="active">@CurrentPage.Name</span>
+            }
+        }
+    </div>
     <div class="preloader">
-            <div class="preloader-body">
-                <div class="cssload-container">
-                    <div class="cssload-speeding-wheel"></div>
-                </div>
-                <p>Loading...</p>
+        <div class="preloader-body">
+            <div class="cssload-container">
+                <div class="cssload-speeding-wheel"></div>
             </div>
-
+            <p>Loading...</p>
         </div>
+
+    </div>
     @RenderBody()
     <!-- Page Footer-->
     @{

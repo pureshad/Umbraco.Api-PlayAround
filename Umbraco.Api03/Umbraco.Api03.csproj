@@ -1741,6 +1741,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SiteSharedLayoutController.cs" />
     <Compile Include="Controllers\TypographyController.cs" />
+    <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\NavigationLinkInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1966,6 +1967,9 @@
     <Content Include="Views\Partials\About\About.cshtml" />
     <Content Include="Views\Partials\Contact\Contact.cshtml" />
     <Content Include="Views\Partials\Typography\Typography.cshtml" />
+    <Content Include="Views\ContactContent.cshtml" />
+    <Content Include="Views\HidePageNav.cshtml" />
+    <Content Include="Views\AwardsControl.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

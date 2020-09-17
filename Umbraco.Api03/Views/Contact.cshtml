@@ -2,6 +2,14 @@
 @{
     Layout = "WebbasedTemplate.cshtml";
 }
-@{
+
+@if (TempData["SuccessMassage"] != null && (bool)TempData["SuccessMassage"])
+{
+    <h2>
+        Form submited!
+    </h2>
+}
+else
+{
     Html.RenderAction("RenderContact", "Contact");
 }
