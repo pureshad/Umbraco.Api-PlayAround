@@ -19,7 +19,7 @@ using Umbraco.ModelsBuilder;
 using Umbraco.ModelsBuilder.Umbraco;
 
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "1517784a1983a52b")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "dbe95015a94c7d68")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
 
 namespace Umbraco.Web.PublishedContentModels
@@ -137,6 +137,15 @@ namespace Umbraco.Web.PublishedContentModels
 		public string ImageWorks2
 		{
 			get { return this.GetPropertyValue<string>("imageWorks2"); }
+		}
+
+		///<summary>
+		/// Language Flag
+		///</summary>
+		[ImplementPropertyType("languageFlag")]
+		public string LanguageFlag
+		{
+			get { return this.GetPropertyValue<string>("languageFlag"); }
 		}
 
 		///<summary>

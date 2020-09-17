@@ -27,7 +27,7 @@ namespace Umbraco.Api03.Controllers
 
             var nav = new List<NavigationList>()
             {
-                new NavigationList(new NavigationLinkInfo(pageInfo.Name, pageInfo.Url))
+                //new NavigationList(new NavigationLinkInfo(pageInfo.Name, pageInfo.Url))
             };
 
             nav.AddRange(GetNavigationList(pageInfo));
