@@ -1740,6 +1740,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SiteSharedLayoutController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\TypographyController.cs" />
     <Compile Include="Models\ContactModel.cs" />
     <Compile Include="Models\NavigationLinkInfo.cs" />
@@ -1970,6 +1971,8 @@
     <Content Include="Views\ContactContent.cshtml" />
     <Content Include="Views\HidePageNav.cshtml" />
     <Content Include="Views\AwardsControl.cshtml" />
+    <Content Include="Views\TEST1.cshtml" />
+    <Content Include="Views\Partials\Home\_Test.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1983,6 +1986,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Shared\" />
+    <Folder Include="Views\Test\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

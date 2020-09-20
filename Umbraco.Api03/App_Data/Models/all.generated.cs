@@ -8,8 +8,8 @@ using  Umbraco.Web;
 using  Umbraco.ModelsBuilder;
 using  Umbraco.ModelsBuilder.Umbraco;
 [assembly: PureLiveAssembly]
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "dbe95015a94c7d68")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.2")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "6da4886fd136533a")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 
 // FILE: models.generated.cs
@@ -602,6 +602,41 @@ namespace Umbraco.Web.PublishedContentModels
 		public string UserName
 		{
 			get { return this.GetPropertyValue<string>("userName"); }
+		}
+
+		///<summary>
+		/// UmbracoNaviHide
+		///</summary>
+		[ImplementPropertyType("umbracoNaviHide")]
+		public bool UmbracoNaviHide
+		{
+			get { return Umbraco.Web.PublishedContentModels.HidePageNav.GetUmbracoNaviHide(this); }
+		}
+	}
+
+	/// <summary>TEST</summary>
+	[PublishedContentModel("tEST")]
+	public partial class TEst : PublishedContentModel, IHidePageNav
+	{
+#pragma warning disable 0109 // new is redundant
+		public new const string ModelTypeAlias = "tEST";
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+#pragma warning restore 0109
+
+		public TEst(IPublishedContent content)
+			: base(content)
+		{ }
+
+#pragma warning disable 0109 // new is redundant
+		public new static PublishedContentType GetModelContentType()
+		{
+			return PublishedContentType.Get(ModelItemType, ModelTypeAlias);
+		}
+#pragma warning restore 0109
+
+		public static PublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<TEst, TValue>> selector)
+		{
+			return PublishedContentModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 		}
 
 		///<summary>
